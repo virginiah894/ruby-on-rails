@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Ideas</h1>
+<div class = 'row'>
+
+    <% @ideas.each do |idea| %>
+      <div class="col-md-4">
+      <div class="card " style="width: 18rem;" >
+      <%= image_tag idea.picture_url, width: '100%' if idea.picture.present? %>
+  <div class="card-body">
+    <h5 class="card-title"><%= idea.name %></h5>
+    <p class="card-text"><%= idea.description %></p>
+    <%= link_to 'Show', idea %>
+    <%= link_to 'Edit', edit_idea_path(idea) %>
+    <%= link_to 'delete', idea, method: :delete, data: {confirm: 'Are you sure to delete'} %>
+  </div>
+  </div>
+  </div>
+    <% end %>
+    </div>
+
+<br>
+
+<%= link_to ' Create New Idea', new_idea_path %>
